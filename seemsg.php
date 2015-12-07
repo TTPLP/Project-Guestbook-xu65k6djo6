@@ -5,20 +5,24 @@
     <title>檢視文章</title>
 </head>
 <body>
-    <?php 
-        $detail=array("name","email","title","text");
-        $fp = fopen('msgbf.csv', 'r');
-        while ($data = fgetcsv($fp)) { 
-            foreach ($data as $value=>$key) {
-                echo $detail[$value].":".$key."<br>";
-
-            } 
-            ?><input type="button" value="刪除" onClick=""this.form.action='delmsg.php';this.form.submit();""><?php  
-            echo"<br>";   
-        }
-
-        fclose($fp);
-    ?>
-    <input type="button" value="返回" onClick="history.back()">
+    <form action="delmsg.php" method="get">
+        <?php 
+            $detail=array("name","email","title","text");
+            $fp = fopen('msgbf.csv', 'r');
+            while ($data = fgetcsv($fp)) { 
+                $number++;
+                ?><input type="checkbox" name="del[]" value="<?= $number?>"><?php
+                foreach ($data as $value=>$key) {
+                    echo $detail[$value].":".$key."<br>";
+                }              
+                echo"<br>";   
+            }
+            fclose($fp);
+        ?>
+        <input type="submit" value="刪除">
+    </form>
+    <form action="msgbo.php" method="get">
+        <input type="submit" value="返回" >
+    </form>    
 </body>
 </html>
