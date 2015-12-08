@@ -8,21 +8,18 @@
     <?php 
         $fp = fopen('msgbf.csv', 'a+');
 
-        $data[0]=$_POST['name'];
-        $data[1]=$_POST['email'];
-        $data[2]=$_POST['title'];
-        $data[3]=$_POST['comments'];
+        $data = array($_POST['name'],$_POST['email'],$_POST['title'],$_POST['comments'] );//put the value we get from the text into data array
 
-        if ($data[0] === '' && $data[1] === '' && $data[2] === '' && $data[3] === ''){
+        if ($data[0] === '' && $data[1] === '' && $data[2] === '' && $data[3] === ''){//if nothing input
 
             echo "please input something!!";
 
             ?><input type="button" value="返回" onclick="window.location.href='index.php'"><?php 
 
         }
-        else {
-            date_default_timezone_set('Asia/Taipei');   
-            $date_time = date("Y-m-d H:i:s");
+        else {                                          //if something input
+            date_default_timezone_set('Asia/Taipei');   //get time
+            $date_time = date("Y-m-d H:i:s");           
 
             $data[4] = $date_time;
 
@@ -32,7 +29,7 @@
             <input type="button" value="確認" onclick="window.location.href='index.php'">
             <?php
 
-            fputcsv($fp, $data);             
+            fputcsv($fp, $data);    //save data into msgbf.csv          
         }
 
         fclose($fp);

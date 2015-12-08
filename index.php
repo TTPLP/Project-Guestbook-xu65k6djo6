@@ -7,6 +7,7 @@
 <body>
     <form action="delmsg.php" method="get">
         <?php 
+            $number = 0;
             $detail = array("name","email","title","text");
 
             $fp = fopen('msgbf.csv', 'r');
@@ -16,7 +17,7 @@
 
                 ?>
                 <input type="checkbox" name="del[]" value = "<?= $number?>">
-                <a href="seemsg.php?id=<?=$number;?>"><?=$data[2];?></a>
+                <a href="seemsg.php?id=<?=$number;?>"><?=$data[2];?></a>   
                 <?php 
 
                 echo"<br>";   

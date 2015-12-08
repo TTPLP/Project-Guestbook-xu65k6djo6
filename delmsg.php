@@ -6,38 +6,33 @@
 </head>
 <body>
     <?php
-        $count = 0;        
-        $flag = 1;
-        $delval = $_GET['del'];
+        $count = 0;
+        $cout = 0;       
+        $delval = $_GET['del']; //the row numbers which we want to delete
 
         $fp = fopen('msgbf.csv', 'r+');
 
-        while ($data = fgetcsv($fp)) { 
+        while ($data = fgetcsv($fp)) { //read row by row
             $count++;        
 
             foreach ($delval as $value => $key) {
 
-                if ($count == $key){
+                if ($count == $key){    //if it is the row that we want to delete
                     break;
                 }
 
-                else if ($count != $key && $value == count($delval)-1){
-                    $flag=0;
+                else if ($count != $key && $value == count($delval)-1){ //else put the values of this row in line array
+                    $line[$cout] = $data;
+                    $cout++;
                 }
 
-            } 
-
-            if ($flag === 0){
-                $line[$cout] = $data;
-                $cout++;
-                $flag = 1;
-            }
+            }            
             
         }
 
         $fp = fopen('msgbf.csv', 'w+');
 
-        foreach ($line as $key => $value) {
+        foreach ($line as $key => $value) { //save the value of line array in msgbf.csv
             fseek($fp,0,SEEK_END);
             fputcsv($fp, $value);             
         }
