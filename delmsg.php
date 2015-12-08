@@ -16,12 +16,12 @@
             $count++;        
 
             foreach ($delval as $value => $key) {
-
-                if ($count == $key){    //if it is the row that we want to delete
+                $key = (int)($key);
+                if ($count === $key){    //if it is the row that we want to delete
                     break;
                 }
 
-                else if ($count != $key && $value == count($delval)-1){ //else put the values of this row in line array
+                else if ($count !== $key && (int)($value) === count($delval)-1){ //else put the values of this row in line array
                     $line[$cout] = $data;
                     $cout++;
                 }
