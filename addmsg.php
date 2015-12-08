@@ -14,7 +14,7 @@
 
             echo "please input something!!";
 
-            ?><input type="button" value="返回" onclick="window.location.href='index.php'"><?php 
+            ?><a href="index.php">返回</a><?php 
 
         }
         else {                                          //if something input
@@ -26,7 +26,7 @@
             echo "add message successful"; 
 
             ?>
-            <input type="button" value="確認" onclick="window.location.href='index.php'">
+            <a href="index.php">確認</a>
             <?php
 
             fputcsv($fp, $data);    //save data into msgbf.csv          

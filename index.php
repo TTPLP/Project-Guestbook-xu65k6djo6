@@ -8,7 +8,7 @@
     <form action="delmsg.php" method="get">
         <?php 
             $number = 0;
-            $detail = array("name","email","title","text");
+            $detail = ["name","email","title","text"];
 
             $fp = fopen('msgbf.csv', 'r');
 
@@ -27,6 +27,6 @@
         ?>
 
         <input type="submit" value="刪除">
-        <input type="button" value="新增" onclick="window.location.href='writemsg.php'">
+        <a href="writemsg.php">新增</a>
 </body>
 </html>

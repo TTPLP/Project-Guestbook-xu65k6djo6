@@ -32,7 +32,7 @@
 
         $fp = fopen('msgbf.csv', 'w+');
 
-        foreach ($line as $key => $value) { //save the value of line array in msgbf.csv
+        foreach ($line as $value) { //save the value of line array in msgbf.csv
             fseek($fp,0,SEEK_END);
             fputcsv($fp, $value);             
         }
@@ -40,6 +40,6 @@
         fclose($fp);
         echo "delete success!!!";
     ?>
-    <input type="button" value="確認" onclick="window.location.href='index.php'">
+    <a href="index.php">確認</a>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <body>
     <?php
         $count = 0;
-        $detail = array("name","email","title","content","posting time" );
+        $detail = ["name","email","title","content","posting time" ];
 
         $fp = fopen('msgbf.csv', 'r');
 
@@ -24,6 +24,6 @@
             }
         }
     ?>
-    <input type="button" value="返回" onclick="window.location.href='index.php'">
+    <a href="index.php">返回</a>
 </body>
 </html>
