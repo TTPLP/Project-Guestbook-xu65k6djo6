@@ -28,15 +28,14 @@
             }
             
         }
-        $fp = fopen('msgbf.csv', 'w');
-        fclose($fp);
-        $fp = fopen('msgbf.csv', 'a');
+        $fp = fopen('msgbf.csv', 'w+');
         foreach ($line as $key => $value) {
+            fseek($fp,0,SEEK_END);
             fputcsv($fp, $value);             
         }
         fclose($fp);
     ?>
-    <form action="seemsg.php" method="get">
+    <form action="seeall.php" method="get">
         <input type="submit" value="返回" >
     </form>
 </body>
