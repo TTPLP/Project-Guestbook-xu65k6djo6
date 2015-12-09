@@ -7,28 +7,22 @@
 <body>
     <?php
         $count = 0;
-        $cout = 0;       
+        $cout = 0;
+        $num = 0;       
         $delval = $_GET['del']; //the row numbers which we want to delete
-
         $fp = fopen('msgbf.csv', 'r+');
-
         while ($data = fgetcsv($fp)) { //read row by row
             $count++;        
-
-            foreach ($delval as $value => $key) {
-                $key = (int)($key);
-                if ($count === $key){    //if it is the row that we want to delete
-                    break;
-                }
-
-                else if ($count !== $key && (int)($value) === count($delval)-1){ //else put the values of this row in line array
-                    $line[$cout] = $data;
-                    $cout++;
-                }
-
-            }            
+            if ((int)($delval[$cout]) === $count){
+                $cout++;
+            }
+            else{
+                $line[$num] = $data;
+                $num ++;
+            }          
             
         }
+        fclose($fp);
 
         $fp = fopen('msgbf.csv', 'w+');
 
@@ -36,7 +30,6 @@
             fseek($fp,0,SEEK_END);
             fputcsv($fp, $value);             
         }
-
         fclose($fp);
         echo "delete success!!!";
     ?>
