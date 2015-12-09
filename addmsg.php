@@ -8,10 +8,10 @@
     <?php 
         $fp = fopen('msgbf.csv', 'a+');
 
-        if (trim($_POST['name']," ") === '' && 
-            trim($_POST['email']," ") === '' && 
-            trim($_POST['title']," ") === '' && 
-            trim($_POST['comments']," ") === ''){//if nothing input
+        if (trim($_POST['name']) === '' && 
+            trim($_POST['email']) === '' && 
+            trim($_POST['title']) === '' && 
+            trim($_POST['comments']) === ''){//if nothing input
 
             echo "please input something!!";
 
