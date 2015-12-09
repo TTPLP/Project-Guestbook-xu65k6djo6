@@ -12,6 +12,10 @@
 
             $fp = fopen('msgbf.csv', 'r');
 
+            // $str = "Hello World!";
+            // echo $str . "<br>";
+            // echo trim($str,"Hed!");
+
             while ($data = fgetcsv($fp)) { 
                 $number++;
 
