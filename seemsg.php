@@ -17,6 +17,7 @@
             if ($count === (int)($_GET['id'])){ //if the row number equals the id number echo this row
 
                 foreach ($data as $value => $key) {
+                    $key = str_replace("\r\n" ,"<br>" ,$key); //deal the line break problem
                     echo $detail[$value].":".$key."<br>";
                 }
 
