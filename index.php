@@ -12,17 +12,13 @@
 
             $fp = fopen('msgbf.csv', 'r');
 
-            // $str = "Hello World!";
-            // echo $str . "<br>";
-            // echo trim($str,"Hed!");
-
             while ($data = fgetcsv($fp)) { 
                 $number++;
 
-                ?>
+        ?>
                 <input type="checkbox" name="del[]" value = "<?= $number?>">
                 <a href="seemsg.php?id=<?=$number;?>"><?=$data[2];?></a>   
-                <?php 
+        <?php 
 
                 echo"<br>";   
             }

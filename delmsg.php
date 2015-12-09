@@ -11,17 +11,20 @@
         $num = 0;       
         $delval = $_GET['del']; //the row numbers which we want to delete
         $fp = fopen('msgbf.csv', 'r+');
+
         while ($data = fgetcsv($fp)) { //read row by row
-            $count++;        
+            $count++;
+
             if ((int)($delval[$cout]) === $count){
                 $cout++;
-            }
-            else{
+
+            } else{
                 $line[$num] = $data;
                 $num ++;
             }          
             
         }
+
         fclose($fp);
 
         $fp = fopen('msgbf.csv', 'w+');
@@ -30,7 +33,9 @@
             fseek($fp,0,SEEK_END);
             fputcsv($fp, $value);             
         }
+
         fclose($fp);
+        
         echo "delete success!!!";
     ?>
     <a href="index.php">確認</a>

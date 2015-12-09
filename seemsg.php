@@ -10,7 +10,7 @@
         $detail = ["name","email","title","content","posting time" ];
 
         $fp = fopen('msgbf.csv', 'r');
-
+        
         while ($data = fgetcsv($fp)){ //read row by row
             $count++;
 

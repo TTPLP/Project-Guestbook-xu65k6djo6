@@ -15,18 +15,19 @@
 
             echo "please input something!!";
 
-            ?><a href="index.php">返回</a><?php 
+    ?>      
+            <a href="index.php">返回</a>
+    <?php 
 
-        }
-        else {                                          //if something input
+        } else {                                          //if something input
             date_default_timezone_set('Asia/Taipei');   //get time
             $date_time = date("Y-m-d H:i:s");           
 
             echo "add message successful"; 
 
-            ?>
+    ?>
             <a href="index.php">確認</a>
-            <?php
+    <?php
 
             fputcsv($fp, [$_POST['name'],
                          $_POST['email'],
