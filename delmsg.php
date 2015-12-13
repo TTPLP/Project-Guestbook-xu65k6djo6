@@ -6,38 +6,40 @@
 </head>
 <body>
     <?php
-        $count = 0;
-        $cout = 0;
-        $num = 0;       
-        $delval = $_GET['del']; //the row numbers which we want to delete
-        $fp = fopen('msgbf.csv', 'r+');
+        session_start();
+        if ($_SESSION['username'] != null){
+            $cout = 0;
+            $num = 0;       
+            $delval = $_GET['del']; //the row numbers which we want to delete
+            $json = json_decode(file_get_contents("msgbf.json"), true);
 
-        while ($data = fgetcsv($fp)) { //read row by row
-            $count++;
+            foreach ($json as $key => $value) {//read row by row
 
-            if ((int)($delval[$cout]) === $count){
-                $cout++;
+                if ( $delval[$cout] == $key ){
 
-            } else{
-                $line[$num] = $data;
-                $num ++;
-            }          
+                    $cout ++;
+
+                } else{
+
+                    $line[$num] = $value;
+                    $num ++;
+                    
+                }          
+                
+            }
+
+            $json = $line;
+            file_put_contents("msgbf.json", json_encode($json));
             
-        }
-
-        fclose($fp);
-
-        $fp = fopen('msgbf.csv', 'w+');
-
-        foreach ($line as $value) { //save the value of line array in msgbf.csv
-            fseek($fp,0,SEEK_END);
-            fputcsv($fp, $value);             
-        }
-
-        fclose($fp);
-        
-        echo "delete success!!!";
+            echo "delete success!!!";
     ?>
-    <a href="index.php">確認</a>
+            <a href="seeall.php">確認</a>
+    <?php
+
+        } else{
+            echo "please login";
+        }
+
+    ?>
 </body>
 </html>

@@ -6,25 +6,31 @@
 </head>
 <body>
     <?php
-        $count = 0;
-        $detail = ["name","email","title","content","posting time" ];
+        session_start();
+        if ($_SESSION['username'] != null){
 
-        $fp = fopen('msgbf.csv', 'r');
-        
-        while ($data = fgetcsv($fp)){ //read row by row
-            $count++;
+            $json = json_decode(file_get_contents("msgbf.json"), true);
+            
+            foreach ($json as $jkey => $jvalue) {
 
-            if ($count === (int)($_GET['id'])){ //if the row number equals the id number echo this row
+                if ($jkey == $_GET['id']){ //if the row number equals the id number echo this row
 
-                foreach ($data as $value => $key) {
-                    $key = str_replace("\r\n" ,"<br>" ,$key); //deal the line break problem
-                    echo $detail[$value].":".$key."<br>";
+                    foreach ($json[$jkey] as $value => $key) {
+                        $key = str_replace("\r\n" ,"<br>" ,$key); //deal the line break problem
+                        echo $value.":".$key."<br>";
+                    }
+
+                    break;
                 }
-
-                break;
             }
-        }
     ?>
-    <a href="index.php">返回</a>
+            <a href="seeall.php">返回</a>
+    <?php
+
+        } else{
+            echo "please login";
+        }
+
+    ?>
 </body>
 </html>
