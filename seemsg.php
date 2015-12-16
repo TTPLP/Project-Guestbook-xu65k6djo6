@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+ <?php include 'init.php';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,6 @@
 </head>
 <body>
     <?php
-        session_start();
         if ($_SESSION['username'] != null){
 
             $json = json_decode(file_get_contents("msgbf.json"), true);
@@ -23,9 +23,7 @@
                     break;
                 }
             }
-    ?>
-            <a href="seeall.php">返回</a>
-    <?php
+            backtoseeall();
 
         } else{
             echo "please login";

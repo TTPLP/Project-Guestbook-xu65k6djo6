@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+ <?php include 'init.php';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,6 @@
 </head>
 <body>
     <?php
-        session_start();
         
         $json = json_decode(file_get_contents("data.json"), true);
 
@@ -18,19 +18,14 @@
                 $_SESSION['email'] = $json[$key]['email'];
 
                 echo "Successful login";
-    ?>
-                <a href="seeall.php">確認</a>
-    <?php            
+                comfirmseeall();           
                 break;
             }
 
         }
         if($_SESSION['username'] === null){
             echo "email or password error" ;
-
-    ?>
-            <a href="index.php">返回</a>
-    <?php
+            backtoindex();
 
         }
     ?>

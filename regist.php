@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include 'init.php';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,13 +14,11 @@
 
         if (trim($_POST['name']) === '' || trim($_POST['email']) === '' || trim($_POST['password'] === '')){
             echo "please fill the form";
-    ?>
-            <a href="signup.php">重新填寫</a>
-    <?php
+            refill();
         }else{
             foreach ($json as $key => $value) {
 
-                if ($key === $_POST['name']){
+                if ($key === $_POST['name']){   //if name you want to regist is in data.json
 
                     echo "name has been used";
                     $used = true;
@@ -43,9 +42,7 @@
                 echo "Successfully registered";
 
             } else{
-    ?>
-                    <a href="signup.php">重新填寫</a>
-    <?php            
+                refill();         
             }
         }
         

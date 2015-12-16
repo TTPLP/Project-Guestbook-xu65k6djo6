@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+ <?php include 'init.php';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,6 @@
 </head>
 <body>
     <?php
-        session_start();
         unset($_SESSION['username']);
         include 'index.php' ;
     ?>

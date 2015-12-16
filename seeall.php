@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
+<?php include 'init.php';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,24 +7,17 @@
 </head>
 <body>
     <?php
-        session_start();
         if ($_SESSION['username'] != null){
-    ?>
-            <form action="delmsg.php" method="get">
-    <?php 
+            delmsgform();
             $detail = ["name","email","title","text"];
 
             $json = json_decode(file_get_contents("msgbf.json"), true);
 
             foreach ($json as $key => $value) {
                 if( $value['name'] === $_SESSION['username']){
-    ?>
-                    <input type="checkbox" name="del[]" value = "<?= $key?>">
-    <?php
+                    delcheckbox($key);
                 }
-    ?>
-                <a href="seemsg.php?id=<?=$key;?>"><?=$value['title'];?></a>   
-    <?php 
+                titlebtn($key,$value['title']);
 
                 echo"<br>";   
             }

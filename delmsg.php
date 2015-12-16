@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+ <?php include 'init.php';?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,6 @@
 </head>
 <body>
     <?php
-        session_start();
         if ($_SESSION['username'] != null){
             $cout = 0;
             $num = 0;       
@@ -23,7 +23,7 @@
 
                     $line[$num] = $value;
                     $num ++;
-                    
+
                 }          
                 
             }
@@ -32,12 +32,11 @@
             file_put_contents("msgbf.json", json_encode($json));
             
             echo "delete success!!!";
-    ?>
-            <a href="seeall.php">確認</a>
-    <?php
+            comfirmseeall();
 
         } else{
             echo "please login";
+            backtoindex();
         }
 
     ?>
