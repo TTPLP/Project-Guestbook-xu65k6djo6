@@ -21,12 +21,7 @@
 
                 echo"<br>";   
             }
-    ?>
-
-            <input type="submit" value="刪除">
-            <a href="writemsg.php">新增</a>
-            <a href="logout.php">登出</a>
-    <?php 
+            deladdlogoutbtn();
         } else{
             echo "please login";
         }
