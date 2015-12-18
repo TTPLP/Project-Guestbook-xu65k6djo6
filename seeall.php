@@ -17,10 +17,11 @@
                 if( $value['name'] === $_SESSION['username']){
                     delcheckbox($key);
                 }
-                titlebtn($key,$value['title']);
 
+                titlebtn($key,$value['title']);
                 echo"<br>";   
             }
+            
             deladdlogoutbtn();
         } else{
             echo "please login";

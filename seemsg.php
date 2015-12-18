@@ -27,6 +27,7 @@
 
         } else{
             echo "please login";
+            backtoindex();
         }
 
     ?>

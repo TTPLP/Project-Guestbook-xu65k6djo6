@@ -12,8 +12,7 @@
 
             $json = json_decode(file_get_contents("msgbf.json"), true);
 
-            if (trim($_POST['title']) === '' && 
-                trim($_POST['comments']) === ''){//if nothing input
+            if (trim($_POST['title']) === '' && trim($_POST['comments']) === ''){//if nothing input
 
                 echo "please input something!!";
 
@@ -22,7 +21,6 @@
             } else {                                          //if something input
                                                    
                 $date_time = date("Y-m-d H:i:s");           //get time
-
                 $detail = array('name' => $_SESSION['username'],
                                 'email' => $_SESSION['email'],
                                 'title' => $_POST['title'],
