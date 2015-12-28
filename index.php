@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php  include_once __DIR__ . "/autoload.php"; 
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
