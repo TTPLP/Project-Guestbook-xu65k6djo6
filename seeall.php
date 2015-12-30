@@ -15,7 +15,7 @@
                 <input type="checkbox" name="del[]" value = "<?= $key?>">
 
     <?php   } ?>
-            <a href="seemsg.php?id=<?=$key;?>"><?=$value;?></a><br> 
+            <a href="seemsg.php?id=<?=$key;?>"><?=$value['title'];?></a><br> 
 
     <?php } ?>
     <input type="submit" value="刪除">

@@ -11,26 +11,25 @@
     <?php
 
         $used = false;
+        $json = json_decode(file_get_contents("data.json"), true);
 
         if (trim($_POST['name']) === '' || trim($_POST['email']) === '' || trim($_POST['password'] === '')){
             echo "please fill the form";
             echo'<a href="signup.php">重新填寫</a>';
 
         }else{
-            foreach ($json as $key => $value) {
-                if ($key === $_POST['name']){   //if name you want to regist is in data.json
+            if(array_key_exists($_POST['name'], $json)) {
+        
                     echo "name has been used";
                     $used = true;
-                    break;
 
-                } else if ($value['email'] === $_POST['email']){
+             } 
+             foreach ($json as $key => $value) {
+                 if(in_array($_POST['email'], $json[$key])){
                     echo "email has been used";
                     $used = true;
-                    break;
-
                 }
-
-            }
+             }
 
             if ($used === false){
                 $_SESSION['registuser'] = $_POST['name'];
