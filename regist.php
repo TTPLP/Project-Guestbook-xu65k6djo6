@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<?php 
-    session_start();
-?>
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,14 +16,14 @@
             echo'<a href="signup.php">重新填寫</a>';
 
         }else{
-            if(array_key_exists($_POST['name'], $json)) {
+            if(array_key_exists($_POST['name'], $json) === true) {
         
                     echo "name has been used";
                     $used = true;
 
              } 
              foreach ($json as $key => $value) {
-                 if(in_array($_POST['email'], $json[$key])){
+                 if(in_array($_POST['email'], $json[$key]) === true){
                     echo "email has been used";
                     $used = true;
                 }
